@@ -5,74 +5,65 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonList,
-  IonItem,
-  IonAvatar,
-  IonTextarea,
-  IonButton,
   IonIcon,
-  IonFooter,
-  IonText,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
 } from '@ionic/react';
-import { camera, videocam, albums, notifications, chatbox, person } from 'ionicons/icons';
-import './home.css';
+import { pulseOutline, calculatorOutline } from 'ionicons/icons';
+import { useHistory } from 'react-router-dom';
 
 const Home: React.FC = () => {
+  const history = useHistory();
+
+  const goToClickCounter = () => {
+    history.push('/click_counter');
+  };
+
+  const goToCalculator = () => {
+    history.push('/calculator');
+  };
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Home</IonTitle>
-        
-          
         </IonToolbar>
+        <hr />
       </IonHeader>
-      <IonContent fullscreen>
-        {/* Post Section */}
-        <IonList>
-          {/* Post Status */}
-          <IonItem>
-            <IonAvatar slot="start">
-              <img src="../src/img/Jalinon.3.jpg" alt="profile" />
-            </IonAvatar>
-            
-          </IonItem>
-          {/* End Post Status */}
-
-          {/* Add more posts here */}
-
-        </IonList>
-
-        {/* Photos, Videos, and Reels Section */}
-        <IonFooter>
-          <IonToolbar>
-            <IonButton color="light" slot="start">
-              <IonIcon icon={camera} />
-              <IonText>Photos</IonText>
-            </IonButton>
-            <IonButton color="light" slot="start">
-              <IonIcon icon={videocam} />
-              <IonText>Videos</IonText>
-            </IonButton>
-            <IonButton color="light" slot="start">
-              <IonIcon icon={albums} />
-              <IonText>Reels</IonText>
-            </IonButton>
-          </IonToolbar>
-
-          <IonToolbar color="light">
-   
-    <IonText style={{ textAlign: 'center' }}>
-      Hi its me John Michael Jalinon
-    </IonText>
-</IonToolbar>
-
-
-        </IonFooter>
-
+      <IonContent fullscreen className="ion-padding">
+        <div className="ion-text-center"> {/* Centering content */}
+        <IonCard onClick={goToClickCounter} style={{ width: '350px', cursor: 'pointer' }} color="light">
+            <IonCardContent style={{ fontSize: '30px' }}>
+              <IonIcon icon={pulseOutline} slot="start" />
+              Click Counter
+            </IonCardContent>
+          </IonCard>
+  
+          <IonCard onClick={goToCalculator} style={{ width: '350px', cursor: 'pointer' }} color="light">
+            <IonCardContent style={{ fontSize: '30px' }}>
+              <IonIcon icon={calculatorOutline} slot="start" />
+              Calculator
+            </IonCardContent>
+          </IonCard>
+          
+          <IonCard style={{ width: '350px' }} color="light">
+            <IonCardContent style={{ fontSize: '30px' }}>
+              Blank
+            </IonCardContent>
+          </IonCard>
+  
+          <IonCard style={{ width: '350px' }} color="light">
+            <IonCardContent style={{ fontSize: '30px' }}>
+              Blank
+            </IonCardContent>
+          </IonCard>
+        </div>
       </IonContent>
     </IonPage>
   );
+  
 };
 
 export default Home;
